@@ -15,30 +15,30 @@ import (
 
 type ITodoCategoryRepository interface {
 	TrxSupportRepo
-	GetAll(ctx context.Context) ([]*entity.TodoCategory, error)
-	GetByID(ctx context.Context, ID int64) (*entity.TodoCategory, error)
-	Create(ctx context.Context, dbTrx TrxObj, params *entity.TodoCategory, nonZeroVal bool) error
-	Update(ctx context.Context, dbTrx TrxObj, params *entity.TodoCategory, changes *entity.TodoCategory) error
+	GetAll(ctx context.Context) ([]*entity.TodoListCategory, error)
+	GetByID(ctx context.Context, ID int64) (*entity.TodoListCategory, error)
+	Create(ctx context.Context, dbTrx TrxObj, params *entity.TodoListCategory, nonZeroVal bool) error
+	Update(ctx context.Context, dbTrx TrxObj, params *entity.TodoListCategory, changes *entity.TodoListCategory) error
 	DeleteByID(ctx context.Context, dbTrx TrxObj, ID int64) error
-	LockByID(ctx context.Context, dbTrx TrxObj, ID int64) (*entity.TodoCategory, error)
+	LockByID(ctx context.Context, dbTrx TrxObj, ID int64) (*entity.TodoListCategory, error)
 }
 
-type TodoCategoryRepository struct {
+type TodoListCategoryRepository struct {
 	GormTrxSupport
 }
 
-func NewTodoCategoryRepository(mysql *config.Mysql) *TodoCategoryRepository {
-	return &TodoCategoryRepository{GormTrxSupport{db: mysql.DB}}
+func NewTodoListCategoryRepository(mysql *config.Mysql) *TodoListCategoryRepository {
+	return &TodoListCategoryRepository{GormTrxSupport{db: mysql.DB}}
 }
 
-func (r *TodoCategoryRepository) GetAll(ctx context.Context) ([]*entity.TodoCategory, error) {
-	funcName := "TodoCategoryRepository.GetAll"
+func (r *TodoListCategoryRepository) GetAll(ctx context.Context) ([]*entity.TodoListCategory, error) {
+	funcName := "TodoListCategoryRepository.GetAll"
 
 	if err := helper.CheckDeadline(ctx); err != nil {
 		return nil, errwrap.Wrap(err, funcName)
 	}
 
-	var result []*entity.TodoCategory
+	var result []*entity.TodoListCategory
 	err := r.db.Raw("SELECT * FROM todo_list_categories").Scan(&result).Error
 	if err != nil {
 		return nil, errwrap.Wrap(err, funcName)
@@ -47,14 +47,14 @@ func (r *TodoCategoryRepository) GetAll(ctx context.Context) ([]*entity.TodoCate
 	return result, nil
 }
 
-func (r *TodoCategoryRepository) GetByID(ctx context.Context, ID int64) (*entity.TodoCategory, error) {
-	funcName := "TodoCategoryRepository.GetByID"
+func (r *TodoListCategoryRepository) GetByID(ctx context.Context, ID int64) (*entity.TodoListCategory, error) {
+	funcName := "TodoListCategoryRepository.GetByID"
 
 	if err := helper.CheckDeadline(ctx); err != nil {
 		return nil, errwrap.Wrap(err, funcName)
 	}
 
-	var result *entity.TodoCategory
+	var result *entity.TodoListCategory
 	err := r.db.Raw("SELECT * FROM todo_list_categories WHERE id = ? LIMIT 1", ID).Scan(&result).Error
 	if errwrap.Is(err, gorm.ErrRecordNotFound) {
 		return nil, a.ErrRecordNotFound()
@@ -63,8 +63,8 @@ func (r *TodoCategoryRepository) GetByID(ctx context.Context, ID int64) (*entity
 	return result, err
 }
 
-func (r *TodoCategoryRepository) Create(ctx context.Context, dbTrx TrxObj, params *entity.TodoCategory, nonZeroVal bool) error {
-	funcName := "TodoCategoryRepository.Create"
+func (r *TodoListCategoryRepository) Create(ctx context.Context, dbTrx TrxObj, params *entity.TodoListCategory, nonZeroVal bool) error {
+	funcName := "TodoListCategoryRepository.Create"
 
 	if err := helper.CheckDeadline(ctx); err != nil {
 		return errwrap.Wrap(err, funcName)
@@ -74,8 +74,8 @@ func (r *TodoCategoryRepository) Create(ctx context.Context, dbTrx TrxObj, param
 	return r.Trx(dbTrx).Select(cols).Create(&params).Error
 }
 
-func (r *TodoCategoryRepository) Update(ctx context.Context, dbTrx TrxObj, params *entity.TodoCategory, changes *entity.TodoCategory) error {
-	funcName := "TodoCategoryRepository.Update"
+func (r *TodoListCategoryRepository) Update(ctx context.Context, dbTrx TrxObj, params *entity.TodoListCategory, changes *entity.TodoListCategory) error {
+	funcName := "TodoListCategoryRepository.Update"
 
 	if err := helper.CheckDeadline(ctx); err != nil {
 		return errwrap.Wrap(err, funcName)
@@ -88,24 +88,24 @@ func (r *TodoCategoryRepository) Update(ctx context.Context, dbTrx TrxObj, param
 	return db.Updates(helper.StructToMap(params, false)).Error
 }
 
-func (r *TodoCategoryRepository) DeleteByID(ctx context.Context, dbTrx TrxObj, ID int64) error {
-	funcName := "TodoCategoryRepository.DeleteByID"
+func (r *TodoListCategoryRepository) DeleteByID(ctx context.Context, dbTrx TrxObj, ID int64) error {
+	funcName := "TodoListCategoryRepository.DeleteByID"
 
 	if err := helper.CheckDeadline(ctx); err != nil {
 		return errwrap.Wrap(err, funcName)
 	}
 
-	return r.Trx(dbTrx).Where("id = ?", ID).Delete(&entity.TodoCategory{}).Error
+	return r.Trx(dbTrx).Where("id = ?", ID).Delete(&entity.TodoListCategory{}).Error
 }
 
-func (r *TodoCategoryRepository) LockByID(ctx context.Context, dbTrx TrxObj, ID int64) (*entity.TodoCategory, error) {
-	funcName := "TodoCategoryRepository.LockByID"
+func (r *TodoListCategoryRepository) LockByID(ctx context.Context, dbTrx TrxObj, ID int64) (*entity.TodoListCategory, error) {
+	funcName := "TodoListCategoryRepository.LockByID"
 
 	if err := helper.CheckDeadline(ctx); err != nil {
 		return nil, errwrap.Wrap(err, funcName)
 	}
 
-	var result *entity.TodoCategory
+	var result *entity.TodoListCategory
 	err := r.Trx(dbTrx).
 		Raw("SELECT * FROM todo_list_categories WHERE id = ? FOR UPDATE", ID).
 		Scan(&result).Error
