@@ -4,13 +4,13 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/entity"
+	apperr "github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/error"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/helper"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/http/auth"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/repository/mysql"
+	mentity "github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/repository/mysql/entity"
 	errwrap "github.com/pkg/errors"
-	"github.com/rahmatrdn/go-skeleton/entity"
-	apperr "github.com/rahmatrdn/go-skeleton/error"
-	"github.com/rahmatrdn/go-skeleton/internal/helper"
-	"github.com/rahmatrdn/go-skeleton/internal/http/auth"
-	"github.com/rahmatrdn/go-skeleton/internal/repository/mysql"
-	mentity "github.com/rahmatrdn/go-skeleton/internal/repository/mysql/entity"
 	"golang.org/x/crypto/bcrypt"
 )
 

@@ -3,9 +3,9 @@ package mongodb
 import (
 	"context"
 
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/helper"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/repository/mongodb/entity"
 	errwrap "github.com/pkg/errors"
-	"github.com/rahmatrdn/go-skeleton/internal/helper"
-	"github.com/rahmatrdn/go-skeleton/internal/repository/mongodb/entity"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 

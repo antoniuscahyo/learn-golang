@@ -1,9 +1,9 @@
 package middleware
 
 import (
+	apperr "github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/error"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/http/auth"
 	"github.com/gofiber/fiber/v2"
-	apperr "github.com/rahmatrdn/go-skeleton/error"
-	"github.com/rahmatrdn/go-skeleton/internal/http/auth"
 )
 
 func VerifyJWTToken(c *fiber.Ctx) error {

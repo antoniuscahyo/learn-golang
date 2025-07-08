@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/rahmatrdn/go-skeleton/internal/repository/mysql/entity"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/repository/mysql/entity"
 
 	"github.com/google/uuid"
 )

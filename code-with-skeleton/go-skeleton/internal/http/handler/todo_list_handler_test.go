@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/http/handler"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/tests/mocks"
 	fiber "github.com/gofiber/fiber/v2"
-	"github.com/rahmatrdn/go-skeleton/internal/http/handler"
-	"github.com/rahmatrdn/go-skeleton/tests/mocks"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/suite"
 	"github.com/valyala/fasthttp"

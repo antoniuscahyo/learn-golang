@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"reflect"
 
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/entity"
 	"github.com/go-playground/locales/id"
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
 	id_translations "github.com/go-playground/validator/v10/translations/id"
-	"github.com/rahmatrdn/go-skeleton/entity"
 )
 
 // ValidatorUsecase is a usecase for custom validating data

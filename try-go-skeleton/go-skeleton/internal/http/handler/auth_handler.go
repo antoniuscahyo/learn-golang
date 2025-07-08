@@ -3,11 +3,11 @@ package handler
 import (
 	"net/http"
 
-	"github.com/rahmatrdn/go-skeleton/entity"
-	"github.com/rahmatrdn/go-skeleton/internal/http/middleware"
-	"github.com/rahmatrdn/go-skeleton/internal/parser"
-	"github.com/rahmatrdn/go-skeleton/internal/presenter/json"
-	"github.com/rahmatrdn/go-skeleton/internal/usecase"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/entity"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/http/middleware"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/parser"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/presenter/json"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/usecase"
 
 	fiber "github.com/gofiber/fiber/v2"
 )

@@ -1,4 +1,4 @@
-module github.com/rahmatrdn/go-skeleton
+module github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton
 
 go 1.24.1
 

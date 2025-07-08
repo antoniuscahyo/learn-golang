@@ -3,11 +3,11 @@ package mysql
 import (
 	"context"
 
-	"github.com/rahmatrdn/go-skeleton/config"
-	"github.com/rahmatrdn/go-skeleton/internal/helper"
-	"github.com/rahmatrdn/go-skeleton/internal/repository/mysql/entity"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/config"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/helper"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/repository/mysql/entity"
 
-	apperr "github.com/rahmatrdn/go-skeleton/error"
+	apperr "github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/error"
 
 	errwrap "github.com/pkg/errors"
 	"gorm.io/gorm"

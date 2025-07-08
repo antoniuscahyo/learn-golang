@@ -6,11 +6,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/rahmatrdn/go-skeleton/config"
-	"github.com/rahmatrdn/go-skeleton/tests/mocks"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/config"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/tests/mocks"
 
-	"github.com/rahmatrdn/go-skeleton/internal/repository/mysql"
-	"github.com/rahmatrdn/go-skeleton/internal/repository/mysql/entity"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/repository/mysql"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/repository/mysql/entity"
 
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/bxcodec/faker"

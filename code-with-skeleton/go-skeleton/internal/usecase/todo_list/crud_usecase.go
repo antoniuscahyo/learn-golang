@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"time"
 
+	generalEntity "github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/entity"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/helper"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/repository/mysql"
+	mentity "github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/repository/mysql/entity"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/usecase"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/usecase/todo_list/entity"
 	errwrap "github.com/pkg/errors"
-	generalEntity "github.com/rahmatrdn/go-skeleton/entity"
-	"github.com/rahmatrdn/go-skeleton/internal/helper"
-	"github.com/rahmatrdn/go-skeleton/internal/repository/mysql"
-	mentity "github.com/rahmatrdn/go-skeleton/internal/repository/mysql/entity"
-	"github.com/rahmatrdn/go-skeleton/internal/usecase"
-	"github.com/rahmatrdn/go-skeleton/internal/usecase/todo_list/entity"
 )
 
 type CrudTodoListUsecase struct {

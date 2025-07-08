@@ -7,10 +7,10 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/rahmatrdn/go-skeleton/config"
-	"github.com/rahmatrdn/go-skeleton/internal/queue"
-	"github.com/rahmatrdn/go-skeleton/internal/queue/consumer"
-	"github.com/rahmatrdn/go-skeleton/internal/repository/mongodb"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/config"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/queue"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/queue/consumer"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/repository/mongodb"
 	"github.com/subosito/gotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 )

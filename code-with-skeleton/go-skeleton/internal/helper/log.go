@@ -5,8 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/rahmatrdn/go-skeleton/config"
-	"github.com/rahmatrdn/go-skeleton/entity"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/config"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/entity"
 	"go.uber.org/zap"
 )
 

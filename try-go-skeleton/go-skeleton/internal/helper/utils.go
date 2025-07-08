@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/rahmatrdn/go-skeleton/entity"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/entity"
 	"golang.org/x/crypto/bcrypt"
 )
 

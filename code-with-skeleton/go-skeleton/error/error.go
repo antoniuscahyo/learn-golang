@@ -3,7 +3,7 @@ package error
 import (
 	"net/http"
 
-	"github.com/rahmatrdn/go-skeleton/entity"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/entity"
 )
 
 func ErrRecordNotFound() CustomErrorResponse {

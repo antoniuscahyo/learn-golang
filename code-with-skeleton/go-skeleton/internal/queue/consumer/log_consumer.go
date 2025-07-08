@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/rahmatrdn/go-skeleton/entity"
-	"github.com/rahmatrdn/go-skeleton/internal/helper"
-	mongoRepo "github.com/rahmatrdn/go-skeleton/internal/repository/mongodb"
-	moentity "github.com/rahmatrdn/go-skeleton/internal/repository/mongodb/entity"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/entity"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/helper"
+	mongoRepo "github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/repository/mongodb"
+	moentity "github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/repository/mongodb/entity"
 )
 
 type LogQueue struct {

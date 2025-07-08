@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 
+	apperr "github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/error"
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/helper"
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
-	apperr "github.com/rahmatrdn/go-skeleton/error"
-	"github.com/rahmatrdn/go-skeleton/internal/helper"
 )
 
 type WithPathID interface {
