@@ -99,7 +99,7 @@ func main() {
 	// _ = usecase.NewLogUsecase(queue)  // LogUsecase is a sample usecase for sending log to queue (Mongodb, ElasticSearch, etc.)
 	userUsecase := usecase.NewUserUsecase(userRepo, jwtAuth)
 	crudTodoListUsecase := todo_list_usecase.NewCrudTodoListUsecase(todoListRepo)
-	crudTodoListCategoryUsecase := todo_list_category_usecase.NewCrudTodoListCategoryUsecase(todoListCategoryRepo)
+	crudTodoListCategoryUsecase := todo_list_category_usecase.NewCrudTodoListCategoryUsecase(todoListCategoryRepo, userRepo)
 
 	api := app.Group("/api/v1")
 
