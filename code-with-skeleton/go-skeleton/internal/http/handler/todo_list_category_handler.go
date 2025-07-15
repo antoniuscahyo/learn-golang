@@ -1,8 +1,10 @@
 package handler
 
 import (
+	"context"
 	"net/http"
 
+	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/http/middleware"
 	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/parser"
 	"github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/presenter/json"
 	todoCategoryUsecase "github.com/antoniuscahyo/learn-golang/code-with-skeleton/go-skeleton/internal/usecase/todo_list_category"
@@ -26,11 +28,11 @@ func NewTodoListCategoryHandler(
 }
 
 func (h *TodoListCategoryHandler) Register(app fiber.Router) {
-	app.Get("/todo-list-categories", h.GetAll)
-	app.Get("/todo-list-categories/:id", h.GetByID)
-	app.Post("/todo-list-categories", h.Create)
-	app.Put("/todo-list-categories/:id", h.Update)
-	app.Delete("/todo-list-categories/:id", h.Delete)
+	app.Get("/todo-list-categories", middleware.VerifyJWTToken, h.GetAll)
+	app.Get("/todo-list-categories/:id", middleware.VerifyJWTToken, h.GetByID)
+	app.Post("/todo-list-categories", middleware.VerifyJWTToken, h.Create)
+	app.Put("/todo-list-categories/:id", middleware.VerifyJWTToken, h.Update)
+	app.Delete("/todo-list-categories/:id", middleware.VerifyJWTToken, h.Delete)
 }
 
 // @Summary Get All Todo List Categories
@@ -75,7 +77,13 @@ func (h *TodoListCategoryHandler) Create(c *fiber.Ctx) error {
 		return h.presenter.BuildError(c, err)
 	}
 
-	data, err := h.usecase.Create(c.Context(), req)
+	// Ambil user_id dari Fiber context
+	userID := c.Locals("user_id")
+
+	// Inject ke context.Context
+	ctx := context.WithValue(c.Context(), "user_id", userID)
+
+	data, err := h.usecase.Create(ctx, req)
 	if err != nil {
 		return h.presenter.BuildError(c, err)
 	}

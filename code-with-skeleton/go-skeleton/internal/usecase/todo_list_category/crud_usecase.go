@@ -16,10 +16,14 @@ import (
 
 type CrudTodoListCategoryUsecase struct {
 	todoCategoryRepo mysql.ITodoCategoryRepository
+	userRepo         mysql.UserRepository
 }
 
-func NewCrudTodoListCategoryUsecase(repo mysql.ITodoCategoryRepository) *CrudTodoListCategoryUsecase {
-	return &CrudTodoListCategoryUsecase{repo}
+func NewCrudTodoListCategoryUsecase(repo mysql.ITodoCategoryRepository, userRepo mysql.UserRepository) *CrudTodoListCategoryUsecase {
+	return &CrudTodoListCategoryUsecase{
+		todoCategoryRepo: repo,
+		userRepo:         userRepo,
+	}
 }
 
 type ICrudTodoListCategoryUsecase interface {
@@ -44,6 +48,7 @@ func (u *CrudTodoListCategoryUsecase) GetAll(ctx context.Context) ([]*entity.Tod
 			ID:          v.ID,
 			Name:        v.Name,
 			Description: v.Description,
+			CreatedBy:   v.CreatedBy,
 			CreatedAt:   helper.ConvertToJakartaTime(v.CreatedAt),
 		})
 	}
@@ -67,6 +72,7 @@ func (u *CrudTodoListCategoryUsecase) GetByID(ctx context.Context, categoryID in
 		ID:          data.ID,
 		Name:        data.Name,
 		Description: data.Description,
+		CreatedBy:   data.CreatedBy,
 		CreatedAt:   helper.ConvertToJakartaTime(data.CreatedAt),
 	}, nil
 }
@@ -79,9 +85,15 @@ func (u *CrudTodoListCategoryUsecase) Create(ctx context.Context, req entity.Tod
 		return nil, errwrap.Wrap(fmt.Errorf(generalEntity.INVALID_PAYLOAD_CODE), errMsg)
 	}
 
+	userID, ok := ctx.Value("user_id").(int64)
+	if !ok {
+		return nil, fmt.Errorf("unauthorized: user_id not found in context")
+	}
+
 	payload := &mentity.TodoListCategory{
 		Name:        req.Name,
 		Description: req.Description,
+		CreatedBy:   userID,
 		CreatedAt:   time.Now(),
 	}
 
@@ -91,10 +103,17 @@ func (u *CrudTodoListCategoryUsecase) Create(ctx context.Context, req entity.Tod
 		return nil, err
 	}
 
+	user, err := u.userRepo.GetByID(ctx, userID)
+	if err != nil {
+		helper.LogError("userRepo.GetByID", funcName, err, capture, "")
+		return nil, err
+	}
+
 	return &entity.TodoListCategoryResponse{
 		ID:          payload.ID,
 		Name:        payload.Name,
 		Description: payload.Description,
+		CreatedBy:   user.Name,
 		CreatedAt:   helper.ConvertToJakartaTime(payload.CreatedAt),
 	}, nil
 }
